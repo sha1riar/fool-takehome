@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% block title %}
+            Fool Home
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block pagecontent %}
+<div class="container content-inner">
+    <div class="main-col">
+        <section class="jumbo-card card">
+            <div class="card-image">
+                <a href="{% url 'articles' firstArticle.publishDate firstArticle.slug %}"><img src="{{ firstArticle.featuredImage }}" alt="" class="img-responsive"></a>
+            </div>
+            <div class="card-elements">
+                <div class="card-header">
+                    <a href="{% url 'articles' firstArticle.publishDate firstArticle.slug %}"><h3>{{ firstArticle.headline }}</h3></a>
+                    <p class="author">{{firstArticle.authorByLine}} | {{firstArticle.publishDate}} </p>
+                </div>
+                <div class="card-copy">
+                    {{firstArticle.promo}}
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="cards row">
+        {% for article in articleList %}
+        <div class="card">
+            <div class="card-image">
+                <a href="{% url 'articles' article.publishDate article.slug %}">
+                    <img src="{{ article.featuredImage }}" alt="">
+                </a>
+            </div>
+            <div class="card-elements">
+                <div class="card-header">
+                    <a href="{% url 'articles' article.publishDate article.slug %}">
+                        <h4>{{ article.headline }}</h4>
+                    </a>
+                    <p class="author">{{ article.authorByLine }} | {{ article.publishDate }} </p>
+                </div>
+                <div class="card-copy">
+                    <p>{{ article.promo }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
