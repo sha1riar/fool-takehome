@@ -11,6 +11,7 @@
 <body>
 {% block pagecontent %}
 <div class="container content-inner">
+    <main class="col-sm-7 col-md-8">
     <div class="main-col">
         <section class="jumbo-card card">
             <div class="card-image">
@@ -49,6 +50,21 @@
         </div>
         {% endfor %}
     </div>
+    </main>
+    <aside class="col-sm-5 col-md-4 p-l">
+        <section class="related-tickers">
+            <div class="block-title">
+                <hr><h2>Articles by Stocks</h2>
+            </div>
+            <div id="stockList">
+                {% for stock in instrumentList %}
+                    <div>
+                        <a href="{% url 'articleByInstrument' stock.instrumentId %}">{{stock.companyName}}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </aside>
 </div>
 {% endblock %}
 </body>

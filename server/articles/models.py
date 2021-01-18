@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 class Tag(models.Model):
@@ -33,3 +32,11 @@ class Article(models.Model):
     tags = models.ManyToManyField(Tag)
     featuredImage = models.URLField()
     slug = models.SlugField()
+
+class Comment(models.Model):
+    timePosted = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField()
+    article = models.ForeignKey(Article,on_delete=models.CASCADE,related_name='comments')
+
+    class Meta:
+            ordering = ['timePosted']

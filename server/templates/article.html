@@ -40,6 +40,9 @@
                     {{ disclosure | safe}}
                 </div>
             </section>
+            <section>
+                {% include 'comment_form.html' %}
+            </section>
         </main>
         <aside class="col-sm-5 col-md-4 p-l">
             <section class="related-tickers">
@@ -50,7 +53,7 @@
                 {% for stock in relatedStocks %}
                     <div class="ticker-row">
                         <div>
-                            <h3>{{stock.companyName}}</h3>
+                            <a href="{% url 'articleByInstrument' stock.instrumentId %}">{{stock.companyName}}</a>
                             <h4>
                     <span class="ticker">
                         <a title="{{stock.companyName}} Stock Quote" href="#">
