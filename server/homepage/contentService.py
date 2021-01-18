@@ -20,7 +20,7 @@ class ContentService:
 
 
     def readContent(self):
-        with open(staticfiles_storage.path('content_api.json')) as f:
+        with open(staticfiles_storage.path('content_api.json'), encoding="utf-8") as f:
             data = json.load(f)
 
         for article in data['results']:
