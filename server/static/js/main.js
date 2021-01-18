@@ -13,6 +13,8 @@ function test(){
     }
 }
 
+
+//This function is from: https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 function shuffle(a) {
     let j, temp, i;
     for (i = a.length - 1; i > 0; i--) {
