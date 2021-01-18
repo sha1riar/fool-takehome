@@ -15,7 +15,7 @@ class QuoteService:
         self.readQuotes()
 
     def readQuotes(self):
-        with open(staticfiles_storage.path('quotes_api.json')) as f:
+        with open(staticfiles_storage.path('quotes_api.json'), encoding="utf-8") as f:
             data = json.load(f)
 
         for quote in data:
