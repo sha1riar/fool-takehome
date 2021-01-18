@@ -1,3 +1,9 @@
+### Running the project
+Requires python to be installed already 
+1. Clone repo 
+2. Run start.bat or start.sh depending on system
+3. Go to localhost:8000
+
 ## Project Submission
 Hello!
 
