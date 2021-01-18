@@ -1,36 +1,47 @@
-## Motley Fool Developer Interview Project
-
+## Project Submission
 Hello!
 
-Below you will find guidelines for a small website you will create. Included are two JSON files, content_api.json and quotes_api.json, which you should use to populate the website. Also included are two wireframe designs for a homepage and an article page as well as some basic HTML templates if you wish to use them, however please feel free to use your own creativity for the design of this website.
+This was a pretty fun project to undertake! A lot of my past experience has been Java/Spring/Angular, so it was nice to 
+break out of that box. 
 
-We would like to thank you for taking the time to complete this project. We will schedule your in-person interview after we have received your completed project. We are looking forward to discussing your experience and the completed project!
+I tracked features and progress using trello: https://trello.com/b/rYD174wl/untitled
 
-### General project guidelines
-* Host your project on github.
-* Create a Django app.
-* Use any publicly available python packages that you need.
-* Use any front-end scaffolding framework and any JS libraries excluding JS frameworks (angular, react, etc)
-* Include a startup shell script that will install any dependencies and start the application.
+##Design
 
-### Homepage
-* The top box on the homepage should be populated with the first article in the content API with the tag where slug=10-promise.
-* The remaining three boxes should be populated with a random assortment of the remaining articles.
-* The headline's of each article should link to the article page.
+I created an app for home page and article. My starting goal was to separate the UI to several apps, and then compose 
+them together as needed. For example you could have a comment app, which could then reused. 
 
-### Article Page
-* Use content_api.json and quotes_api.json to populate the details for the individual article page.
-* Use a URL schema that makes sense to you.
-* Create a button below the Stock Quotes sidebar that, when clicked, will use javascript to shuffle the order of the stock quote 
-items.
-* Ability to add comments at the bottom of an article by anonymous users.
 
-### Evaluation criteria
-List of possible evaluation criteria.
-* Front-end structure - Use of partials, CSS and JS structure.
-* Django Framework usage.
-* URL Structure.
-* Any database use.
-* Possible areas for future additions, improvement, or optimization.
-* Anything you did to make make the application your own.
+###Home Page
+####Views
+* homepage_view - I added a feature to view all articles for a specific company. I think this feature would become more useful
+  when there are more articles :) 
+####Service
+* contentService - Mock api call, when you load the page it loads the data from content JSON, and determines the slug-10
+  article. This also saves the articles to the database, and picks 3 random articles.
+  
+###Articles
+This has A models. 
+####Models
+* Article 
+* Tag 
+* Instrument
+* Comment
+
+I decided to make models for instruments, comments, and tags, because I thought it would make it easier to filter and decouple if needed
+in the future. The article page uses the related instruments to populate the ticker box on the right. The randomize button will
+reorder the stocks listed there in a random order. The comment section allows anyone to post a comment. 
+
+####Views
+* article_full_view - Shows you an article with related instruments. I make a "Service call" to get quotes data
+* article_list_View - Shows you a list of articles with an Instrument ID. This view can be repeated for other attributes like tag
+
+####Service
+* quoteService - Mock api call. It loads all data from the JSON into a dict and then allows for look ups by 
+instrument id
+
+###Files
+* static: css, fonts, js files
+* staticfiles: content_api, quotes_api
+* templates: article, article_list, base, comment_form, home
 
