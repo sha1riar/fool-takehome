@@ -45,14 +45,3 @@ instrument id
 * staticfiles: content_api, quotes_api
 * templates: article, article_list, base, comment_form, home
 
-  
-
-### Evaluation criteria
-List of possible evaluation criteria.
-* Front-end structure - Use of partials, CSS and JS structure.
-* Django Framework usage.
-* URL Structure.
-* Any database use.
-* Possible areas for future additions, improvement, or optimization.
-* Anything you did to make make the application your own.
-
